@@ -3,8 +3,10 @@ module example.com/test-go-ws
 go 1.24.4
 
 require github.com/ccxt/ccxt/go/v4 v4.4.92
+require github.com/ccxt/ccxt/go/v4/ws v0.0.0-00010101000000-000000000000
 
 replace github.com/ccxt/ccxt/go/v4 => ../ccxt/go/v4
+replace github.com/ccxt/ccxt/go/v4/ws => ../ccxt/go/v4/ws
 
 require (
 	github.com/bits-and-blooms/bitset v1.13.0 // indirect

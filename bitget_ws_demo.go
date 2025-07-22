@@ -5,10 +5,11 @@ import (
 	"time"
 
 	ccxt "github.com/ccxt/ccxt/go/v4"
+	ccxtws "github.com/ccxt/ccxt/go/v4/ws"
 )
 
 func TestHandleOrderBook() {
-	bitget := ccxt.NewBitgetWs(map[string]interface{}{
+	bitget := ccxtws.NewBitget(map[string]interface{}{
 		// "apiKey":    "your-api-key",
 		// "secret":    "your-secret",
 		// "password":  "your-password",
@@ -126,19 +127,20 @@ func TestMethods() {
 	// ------------------- CORE -------------------
 	// ex := ccxt.NewBinanceWsCore()
 	apiKey := ""
-	secret := ""
-	password := ""
-	ex := ccxt.NewBitgetWs(map[string]interface{}{
-		// "apiKey": apiKey,
-		// "secret": secret,
-		// "password": password,
+    secret := ""
+    password := ""
+	ex := ccxtws.NewBitget(map[string]interface{}{
+		"apiKey": apiKey,
+		"secret": secret,
+		"password": password,
 	})
 	ex.Verbose = true
 	ex.Init(nil)
-	ex.LoadMarkets()
-	// ex.ApiKey = apiKey
-	// ex.Secret = secret
-	// ex.Password = password
+	ex.ApiKey = apiKey
+	ex.Secret = secret
+	ex.Password = password
+	// Load markets on the core instance
+	<-ex.LoadMarkets()
 
 	// ------------------- CORE -------------------
 	symbol   			  		:= "XRP/USDT"
